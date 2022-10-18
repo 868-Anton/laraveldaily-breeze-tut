@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Dashboard') }}
+          {{ __('Categories') }}
       </h2>
   </x-slot>
 
@@ -12,15 +12,31 @@
                   <table class="table-auto border-separate border-spacing-4 ">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ( $categories as $category)    
                         <tr>
-                            <td><a href="#">{{ $category->id }}</a></td>
-                            <td><a href="http://">{{ $category->name }}</a></td>
+                            <td>{{ $category->name }}</td>
+                            <td>
+                                <a href=
+                                "{{ route('categories.edit',$category) }}">Edit
+                                </a>
+                            </td>
+                            <td>
+                                <form action=
+                                "{{ route('categories.destroy',$category) }}" method="post"
+                                >
+                                    @csrf
+                                    @method('DELETE')  
+                                    <button type="submit" onclick="return confirm('Are you sure?')">Delete
+                                    </button> 
+                                </form>
+
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
