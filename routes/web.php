@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,12 @@ Route::group(['middleware'=>['auth','verified']],function(){
         return view('dashboard');
     })->name('dashboard');
     
-    Route::resource('categories',CategoryController::class)
-    ->middleware('is_admin');
-    
+    Route::group(['middleware'=>'is_admin'],function()
+    {
+        Route::resource('categories',CategoryController::class);
+        Route::resource('posts',PostController::class);
+    }
+    );    
 });
 
 require __DIR__.'/auth.php';
