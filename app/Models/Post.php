@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Models;
-namespace App\Category;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -12,6 +12,6 @@ class Post extends Model
     //Eloquent Relation ???
     public function category()
     {
-        $this->belongsTo(Category::class);
+      return $this->belongsTo(Category::class);
     }
 }
