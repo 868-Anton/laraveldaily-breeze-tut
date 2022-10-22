@@ -46,8 +46,7 @@ class PostController extends Controller
                 'title'=> $request->input('title'),
                 'post_text'=> $request->input('post_text'),
                 'category_id'=> $request->input('category_id'),
-            ]
-        );
+            ]);
 
         return redirect()->route('posts.index');
 

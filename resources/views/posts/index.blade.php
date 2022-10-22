@@ -27,7 +27,7 @@
                         @foreach ( $posts as $post)    
                         <tr>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->text }}</td>
+                            <td>{{ $post->post_text }}</td>
                             <td>{{ $post->category->name }}</td>
                             <td>
                                 <a href=
